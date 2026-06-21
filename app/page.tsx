@@ -47,20 +47,20 @@ export default function HomePage() {
   return (
     <main className="min-h-screen">
       <header className="sticky top-0 z-20 border-b border-slate-200 bg-white/90 backdrop-blur">
-        <div className="relative mx-auto flex max-w-7xl items-center gap-4 px-4 py-4">
+        <div className="relative mx-auto flex h-14 max-w-7xl items-center gap-3 px-4">
           <button
             type="button"
             onClick={() => setMenuOpen((open) => !open)}
-            className="flex h-11 w-11 shrink-0 flex-col items-center justify-center gap-1.5 rounded-lg border border-slate-200 bg-white hover:border-[#7C6BFF] hover:bg-violet-50"
+            className="flex h-10 w-10 shrink-0 flex-col items-center justify-center gap-1.5 rounded-lg border border-slate-200 bg-white hover:border-[#7C6BFF] hover:bg-violet-50"
             aria-label="メニュー"
             aria-expanded={menuOpen}
           >
-            <span className="h-0.5 w-6 rounded-full bg-ink" />
-            <span className="h-0.5 w-6 rounded-full bg-ink" />
-            <span className="h-0.5 w-6 rounded-full bg-ink" />
+            <span className="h-0.5 w-5 rounded-full bg-ink" />
+            <span className="h-0.5 w-5 rounded-full bg-ink" />
+            <span className="h-0.5 w-5 rounded-full bg-ink" />
           </button>
           {menuOpen ? (
-            <div className="absolute left-4 top-[72px] z-30 w-64 rounded-lg border border-slate-200 bg-white p-2 shadow-soft">
+            <div className="absolute left-4 top-[58px] z-30 w-64 rounded-lg border border-slate-200 bg-white p-2 shadow-soft">
               <Link onClick={() => setMenuOpen(false)} href="/mypage" className="block rounded-md px-4 py-3 text-sm font-black text-ink hover:bg-violet-50 hover:text-[#7C6BFF]">
                 マイページ
               </Link>
@@ -89,7 +89,7 @@ export default function HomePage() {
               placeholder="作品やコードを検索..."
               className="hidden w-full max-w-md rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none focus:border-blueprint md:block"
             />
-            <Link href="/new" className="rounded-lg bg-ink px-4 py-3 text-sm font-bold text-white shadow-soft hover:bg-slate-800">
+            <Link href="/new" className="rounded-lg bg-ink px-4 py-2.5 text-sm font-bold text-white shadow-soft hover:bg-slate-800">
               投稿
             </Link>
           </div>

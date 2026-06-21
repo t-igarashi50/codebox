@@ -3,7 +3,7 @@ type CodeBoxLogoProps = {
 };
 
 const sizeClass = {
-  sm: 64,
+  sm: 40,
   md: 92,
   lg: 110
 };
