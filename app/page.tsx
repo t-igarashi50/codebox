@@ -6,6 +6,7 @@ import { CodeBoxWordmark } from "../components/CodeBoxLogo";
 import { formatTime, getPostImages, hasLikedPost, hasSharedCode, likePost, listPosts } from "../lib/store";
 import { buildCodePreviewSrcDoc } from "../lib/preview";
 import { allAiTools } from "../lib/aiTools";
+import { getCurrentUser } from "../lib/auth";
 import type { CodePost, SortMode } from "../lib/types";
 
 const sortItems: { key: SortMode; label: string }[] = [
@@ -24,12 +25,35 @@ export default function HomePage() {
   const [query, setQuery] = useState("");
   const [aiTool, setAiTool] = useState("すべて");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [hideHeader, setHideHeader] = useState(false);
 
   useEffect(() => {
     listPosts(sort, query).then((items) => {
       setPosts(aiTool === "すべて" ? items : items.filter((post) => post.aiTool === aiTool));
     });
   }, [sort, query, aiTool]);
+
+  useEffect(() => {
+    getCurrentUser().then((user) => setIsLoggedIn(Boolean(user)));
+  }, []);
+
+  useEffect(() => {
+    let lastY = window.scrollY;
+    function handleScroll() {
+      const currentY = window.scrollY;
+      const isMobile = window.innerWidth < 768;
+      if (!isMobile) {
+        setHideHeader(false);
+        return;
+      }
+      setHideHeader(currentY > lastY && currentY > 80);
+      if (menuOpen) setMenuOpen(false);
+      lastY = currentY;
+    }
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [menuOpen]);
 
   const works = useMemo(() => posts.filter((post) => (post.kind ?? "work") === "work"), [posts]);
   const themes = useMemo(() => posts.filter((post) => post.kind === "theme").sort((a, b) => +new Date(b.createdAt) - +new Date(a.createdAt)), [posts]);
@@ -46,7 +70,7 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen">
-      <header className="sticky top-0 z-20 border-b border-slate-200 bg-white/90 backdrop-blur">
+      <header className={`sticky top-0 z-20 border-b border-slate-200 bg-white/90 backdrop-blur transition-transform duration-200 ${hideHeader ? "-translate-y-full md:translate-y-0" : "translate-y-0"}`}>
         <div className="relative mx-auto flex h-14 max-w-7xl items-center gap-3 px-4">
           <button
             type="button"
@@ -61,17 +85,8 @@ export default function HomePage() {
           </button>
           {menuOpen ? (
             <div className="absolute left-4 top-[58px] z-30 w-64 rounded-lg border border-slate-200 bg-white p-2 shadow-soft">
-              <Link onClick={() => setMenuOpen(false)} href="/mypage" className="block rounded-md px-4 py-3 text-sm font-black text-ink hover:bg-violet-50 hover:text-[#7C6BFF]">
-                マイページ
-              </Link>
-              <Link onClick={() => setMenuOpen(false)} href="/login" className="block rounded-md px-4 py-3 text-sm font-black text-ink hover:bg-violet-50 hover:text-[#7C6BFF]">
-                ログイン
-              </Link>
-              <Link onClick={() => setMenuOpen(false)} href="/new" className="block rounded-md px-4 py-3 text-sm font-black text-ink hover:bg-violet-50 hover:text-[#7C6BFF]">
-                投稿
-              </Link>
-              <Link onClick={() => setMenuOpen(false)} href="/master" className="block rounded-md px-4 py-3 text-sm font-black text-slate-500 hover:bg-violet-50 hover:text-[#7C6BFF]">
-                マスター画面
+              <Link onClick={() => setMenuOpen(false)} href={isLoggedIn ? "/mypage" : "/login"} className="block rounded-md px-4 py-3 text-sm font-black text-ink hover:bg-violet-50 hover:text-[#7C6BFF]">
+                {isLoggedIn ? "マイページ" : "ログイン"}
               </Link>
             </div>
           ) : null}
