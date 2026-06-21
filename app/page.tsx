@@ -75,13 +75,13 @@ export default function HomePage() {
           <button
             type="button"
             onClick={() => setMenuOpen((open) => !open)}
-            className="flex h-[42px] w-[42px] shrink-0 flex-col items-center justify-center gap-1.5 rounded-xl border-2 border-slate-200 bg-white hover:border-[#7C6BFF] hover:bg-violet-50"
+            className="flex h-[42px] w-[42px] shrink-0 items-center justify-center rounded-[10px] border-2 border-[#dbe3ee] bg-white hover:border-[#7C6BFF] hover:bg-violet-50"
             aria-label="メニュー"
             aria-expanded={menuOpen}
           >
-            <span className="h-0.5 w-6 rounded-full bg-ink" />
-            <span className="h-0.5 w-6 rounded-full bg-ink" />
-            <span className="h-0.5 w-6 rounded-full bg-ink" />
+            <svg className="h-11 w-11" viewBox="0 0 44 44" aria-hidden="true">
+              <path d="M12 15h20M12 22h20M12 29h20" stroke="#08131a" strokeWidth="3" strokeLinecap="round" />
+            </svg>
           </button>
           {menuOpen ? (
             <div className="absolute left-2 top-[58px] z-30 w-64 rounded-lg border border-slate-200 bg-white p-2 shadow-soft sm:left-3">
