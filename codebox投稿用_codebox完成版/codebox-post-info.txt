@@ -1,0 +1,26 @@
+これはcodebox投稿用の完成版ZIPです。
+
+このZIPを投稿画面の「作品ZIP」に入れてください。
+
+投稿タイトル案:
+codeboxを作りました
+
+コメント案:
+AIで作った作品やコードを気軽に投稿できるコミュニティサイトです。スクショ、ZIP、コード、いいね、コメント、検索、ランキングに対応しています。
+
+コード欄に貼るなら:
+app/page.tsx の一部、または README.md の内容を貼ると分かりやすいです。
+
+入っているもの:
+- app
+- components
+- lib
+- supabase
+- public
+- package.json
+- README.md
+
+入れていないもの:
+- node_modules
+- .next
+- 重い開発用ファイル
