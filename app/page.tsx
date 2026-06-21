@@ -71,7 +71,7 @@ export default function HomePage() {
   return (
     <main className="min-h-screen">
       <header className={`sticky top-0 z-20 border-b border-slate-200 bg-white/90 backdrop-blur transition-transform duration-200 ${hideHeader ? "-translate-y-full md:translate-y-0" : "translate-y-0"}`}>
-        <div className="relative mx-auto flex h-14 max-w-7xl items-center gap-3 pl-3 pr-5 sm:pl-4 sm:pr-6">
+        <div className="relative mx-auto flex h-14 max-w-7xl items-center gap-2 pl-2 pr-4 sm:pl-3 sm:pr-5">
           <button
             type="button"
             onClick={() => setMenuOpen((open) => !open)}
@@ -84,19 +84,16 @@ export default function HomePage() {
             <span className="h-0.5 w-6 rounded-full bg-ink" />
           </button>
           {menuOpen ? (
-            <div className="absolute left-4 top-[58px] z-30 w-64 rounded-lg border border-slate-200 bg-white p-2 shadow-soft">
+            <div className="absolute left-2 top-[58px] z-30 w-64 rounded-lg border border-slate-200 bg-white p-2 shadow-soft sm:left-3">
               <Link onClick={() => setMenuOpen(false)} href={isLoggedIn ? "/mypage" : "/login"} className="block rounded-md px-4 py-3 text-sm font-black text-ink hover:bg-violet-50 hover:text-[#7C6BFF]">
                 {isLoggedIn ? "マイページ" : "ログイン"}
               </Link>
             </div>
           ) : null}
-          <Link href="/" className="flex shrink-0 items-center gap-3">
+          <Link href="/" className="flex shrink-0 items-center gap-2">
             <CodeBoxWordmark />
-            <span className="flex flex-col leading-none">
-              <span className="mt-1 hidden text-xs font-bold text-slate-500 sm:inline">AI MADE SHOWCASE</span>
-            </span>
           </Link>
-          <p className="hidden text-sm font-bold text-slate-600 md:block">次世代AIクリエイターの登竜門</p>
+          <p className="hidden text-sm font-bold text-slate-600 xl:block">次世代AIクリエイターの登竜門</p>
           <div className="ml-auto flex flex-1 items-center justify-end gap-3">
             <input
               value={query}
