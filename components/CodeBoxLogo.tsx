@@ -55,7 +55,7 @@ export function CodeBoxWordmark() {
         />
       </span>
       <span className="inline-block text-[26px] font-extrabold leading-none tracking-normal" style={{ fontFamily: "'Arial Narrow', 'Roboto Condensed', Arial, sans-serif", transform: "translateY(3px) scaleX(0.92)", transformOrigin: "left center" }}>
-        <span className="text-[#071846]">Code</span><span className="text-[#7C6BFF]">Box</span>
+        <span className="text-[#071846]">Code</span><span className="bg-gradient-to-br from-[#7B4DFF] via-[#5C5BFF] to-[#8B5CF6] bg-clip-text text-transparent">Box</span>
       </span>
     </span>
   );
