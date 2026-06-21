@@ -71,17 +71,17 @@ export default function HomePage() {
   return (
     <main className="min-h-screen">
       <header className={`sticky top-0 z-20 border-b border-slate-200 bg-white/90 backdrop-blur transition-transform duration-200 ${hideHeader ? "-translate-y-full md:translate-y-0" : "translate-y-0"}`}>
-        <div className="relative mx-auto flex h-14 max-w-7xl items-center gap-3 px-4">
+        <div className="relative mx-auto flex h-14 max-w-7xl items-center gap-3 px-5 sm:px-6">
           <button
             type="button"
             onClick={() => setMenuOpen((open) => !open)}
-            className="flex h-[42px] w-16 shrink-0 flex-col items-center justify-center gap-1.5 rounded-xl border-2 border-slate-200 bg-white hover:border-[#7C6BFF] hover:bg-violet-50"
+            className="flex h-[42px] w-[42px] shrink-0 flex-col items-center justify-center gap-1.5 rounded-xl border-2 border-slate-200 bg-white hover:border-[#7C6BFF] hover:bg-violet-50"
             aria-label="メニュー"
             aria-expanded={menuOpen}
           >
-            <span className="h-0.5 w-7 rounded-full bg-ink" />
-            <span className="h-0.5 w-7 rounded-full bg-ink" />
-            <span className="h-0.5 w-7 rounded-full bg-ink" />
+            <span className="h-0.5 w-6 rounded-full bg-ink" />
+            <span className="h-0.5 w-6 rounded-full bg-ink" />
+            <span className="h-0.5 w-6 rounded-full bg-ink" />
           </button>
           {menuOpen ? (
             <div className="absolute left-4 top-[58px] z-30 w-64 rounded-lg border border-slate-200 bg-white p-2 shadow-soft">
@@ -104,7 +104,7 @@ export default function HomePage() {
               placeholder="作品やコードを検索..."
               className="hidden w-full max-w-md rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none focus:border-blueprint md:block"
             />
-            <Link href="/new" className="flex h-[42px] w-16 items-center justify-center rounded-xl bg-ink text-sm font-bold text-white shadow-soft hover:bg-slate-800">
+            <Link href="/new" className="flex h-[42px] min-w-[64px] items-center justify-center rounded-xl bg-ink px-4 text-sm font-bold text-white shadow-soft hover:bg-slate-800">
               投稿
             </Link>
           </div>
