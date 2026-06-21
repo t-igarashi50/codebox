@@ -36,11 +36,11 @@ export function CodeBoxLogo({ size = "md" }: CodeBoxLogoProps) {
 }
 
 export function CodeBoxWordmark() {
-  const iconScale = 40 / 306;
+  const iconScale = 34 / 306;
 
   return (
     <span className="flex items-center gap-2" aria-label="CodeBox">
-      <span className="relative block h-10 w-[42px] overflow-hidden" aria-hidden="true">
+      <span className="relative block h-[34px] w-[30px] overflow-hidden" aria-hidden="true">
         <img
           alt=""
           className="absolute max-w-none select-none"
@@ -54,7 +54,7 @@ export function CodeBoxWordmark() {
           }}
         />
       </span>
-      <span className="text-[30px] font-black leading-none tracking-normal">
+      <span className="text-[26px] font-extrabold leading-none tracking-normal" style={{ fontFamily: "'Arial Narrow', 'Roboto Condensed', Arial, sans-serif" }}>
         <span className="text-[#071846]">Code</span><span className="text-[#7C6BFF]">Box</span>
       </span>
     </span>
