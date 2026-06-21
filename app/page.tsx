@@ -71,7 +71,7 @@ export default function HomePage() {
   return (
     <main className="min-h-screen">
       <header className={`sticky top-0 z-20 border-b border-slate-200 bg-white/90 backdrop-blur transition-transform duration-200 ${hideHeader ? "-translate-y-full md:translate-y-0" : "translate-y-0"}`}>
-        <div className="relative mx-auto flex h-14 max-w-7xl items-center gap-3 px-5 sm:px-6">
+        <div className="relative mx-auto flex h-14 max-w-7xl items-center gap-3 pl-3 pr-5 sm:pl-4 sm:pr-6">
           <button
             type="button"
             onClick={() => setMenuOpen((open) => !open)}
